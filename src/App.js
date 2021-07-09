@@ -1,6 +1,6 @@
 import './App.css';
 import { Route } from 'react-router-dom';
-import  { Header, TodoList, AddTask } from './components';
+import  { Header, TodoList } from './components';
 import data from './data.json';
 
 function App() {
@@ -9,7 +9,6 @@ function App() {
       <Route path='/'>
         <Header />
         <TodoList tasks={data} />
-        <AddTask />
       </Route>
     </div>
   );

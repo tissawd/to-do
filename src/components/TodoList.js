@@ -1,9 +1,10 @@
-import TodoListItem from "./TodoListItem"
+import { TodoListItem, AddTask } from "./"
 import { useState } from "react";
 
 
 const TodoList = ({ tasks }) => {
-    const [ taskList, setTaskList ] = useState(tasks);    
+    const [ taskList, setTaskList ] = useState(tasks);
+    const [ nextId, setNextId ] = useState(taskList.length + 1)    
     
     function toggleCompleted(id){
         let mapped = taskList.map(task => {
@@ -19,6 +20,11 @@ const TodoList = ({ tasks }) => {
         setTaskList(remaining);
     }
 
+    function addNewTask(newTask){
+        setTaskList([...taskList, {id: nextId, task: newTask, complete: false}]);
+        setNextId(nextId + 1);
+    }
+
     return (
         <div className="list-container">
             <ul>
@@ -28,6 +34,7 @@ const TodoList = ({ tasks }) => {
                 }
             </ul>
             <button onClick={() => clearCompleted()}>Clear Completed Tasks</button>
+            <AddTask addNewTask={addNewTask} />
         </div>
     )
 }
