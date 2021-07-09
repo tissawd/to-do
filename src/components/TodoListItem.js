@@ -1,8 +1,15 @@
 
-const TodoListItem = ({ task }) => {
+const TodoListItem = ({ task, toggle }) => {
+
+    
 
     return (
-        <li>{task}</li>
+        <li id={task.id} className={task.complete ? "strike" : ""} 
+        onClick={(e) => {
+            toggle(e.target.id)
+            } 
+        }
+        >{task.task}</li>
     )
 }
 
