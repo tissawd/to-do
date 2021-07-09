@@ -12,13 +12,23 @@ const TodoList = ({ tasks }) => {
         setTaskList(mapped);
     }
 
+    function clearCompleted(){
+        let remaining = taskList.filter(task => {
+            return !task.complete
+        })
+        setTaskList(remaining);
+    }
+
     return (
-        <ul>
-            {taskList.map(task => {
-            return <TodoListItem task={task} toggle={toggleCompleted} />
-                })
-            }
-        </ul>
+        <div className="list-container">
+            <ul>
+                {taskList.map(task => {
+                return <TodoListItem task={task} toggle={toggleCompleted} key={task.id} />
+                    })
+                }
+            </ul>
+            <button onClick={() => clearCompleted()}>Clear Completed Tasks</button>
+        </div>
     )
 }
 

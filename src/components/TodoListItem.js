@@ -4,7 +4,7 @@ const TodoListItem = ({ task, toggle }) => {
     
 
     return (
-        <li id={task.id} className={task.complete ? "strike" : ""} 
+        <li id={task.id} key={task.id} className={task.complete ? "strike" : ""} 
         onClick={(e) => {
             toggle(e.target.id)
             } 
