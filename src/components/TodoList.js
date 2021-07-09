@@ -1,9 +1,14 @@
 import TodoListItem from "./TodoListItem"
+import { useState } from "react";
+
 
 const TodoList = ({ tasks }) => {
+    const [ taskList, setTaskList ] = useState(tasks);    
+    
+    
     return (
         <ul>
-        {tasks?.map(task => {
+        {taskList.map(task => {
             console.log(task);
            return <TodoListItem task={task} />
         })
